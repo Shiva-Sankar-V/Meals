@@ -9,9 +9,9 @@ import {
 import { useNavigation } from "@react-navigation/native";
 
 const MealItem = (props) => {
-  function pressHandler1() {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
+  function pressHandler1() {
     navigation.navigate("Meal Detail", {
       mealId: props.id,
     });
