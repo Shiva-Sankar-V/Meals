@@ -14,7 +14,13 @@ export default function App() {
       <StatusBar style="dark" />
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Meals Categories" component={CategoriesScreen1} />
+          <Stack.Screen
+            name="Meals Categories"
+            component={CategoriesScreen1}
+            options={{
+              title: "All Categories",
+            }}
+          />
           <Stack.Screen name="Meals Overview" component={MealsOverviewScreen} />
         </Stack.Navigator>
       </NavigationContainer>
