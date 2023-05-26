@@ -4,7 +4,7 @@ const CategoryGridTile = (props) => {
   return (
     <View style={styles.gridItem}>
       <Pressable>
-        <View>
+        <View style={styles.innerContainer}>
           <Text>{props.title}</Text>
         </View>
       </Pressable>
@@ -21,5 +21,11 @@ const styles = StyleSheet.create({
     height: 150,
     borderRadius: 8,
     elevation: 4,
+  },
+  innerContainer: {
+    flex: 1,
+    padding: 16,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
