@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Pressable } from "react-native";
 const CategoryGridTile = (props) => {
   return (
     <View style={styles.gridItem}>
-      <Pressable>
+      <Pressable style={styles.button}>
         <View style={styles.innerContainer}>
           <Text>{props.title}</Text>
         </View>
@@ -21,6 +21,9 @@ const styles = StyleSheet.create({
     height: 150,
     borderRadius: 8,
     elevation: 4,
+  },
+  button: {
+    flex: 1,
   },
   innerContainer: {
     flex: 1,
