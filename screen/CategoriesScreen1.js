@@ -4,6 +4,12 @@ import CategoryGridTile from "../components/CategoryGridTile";
 
 const CategoriesScreen1 = ({ navigation }) => {
   const renderCategoriesItem = (itemData) => {
+    const pressHadler = () => {
+      navigation.navigate("Meals Overview", { categoryId: itemData.item.id });
+
+      //second parament is optional which should be an object which gives the information which should be passed down to meals overview screen
+    };
+
     return (
       <CategoryGridTile
         title={itemData.item.title}
@@ -11,10 +17,6 @@ const CategoriesScreen1 = ({ navigation }) => {
         onPress1={pressHadler}
       />
     );
-  };
-
-  const pressHadler = () => {
-    navigation.navigate("Meals Overview");
   };
 
   return (
