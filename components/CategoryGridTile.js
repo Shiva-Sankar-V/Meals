@@ -5,7 +5,7 @@ const CategoryGridTile = (props) => {
     <View style={[styles.gridItem, { backgroundColor: props.color }]}>
       <Pressable
         android_ripple={{ color: "#ccc" }}
-        style={(pressed) => [
+        style={({ pressed }) => [
           styles.button,
           pressed ? styles.buttonPressed : null,
         ]}
