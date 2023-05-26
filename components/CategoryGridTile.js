@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Pressable } from "react-native";
 
 const CategoryGridTile = (props) => {
   return (
-    <View>
+    <View style={styles.gridItem}>
       <Pressable>
         <View>
           <Text>{props.title}</Text>
@@ -14,4 +14,12 @@ const CategoryGridTile = (props) => {
 
 export default CategoryGridTile;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  gridItem: {
+    flex: 1,
+    margin: 16,
+    height: 150,
+    borderRadius: 8,
+    elevation: 4,
+  },
+});
