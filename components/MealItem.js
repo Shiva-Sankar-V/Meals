@@ -1,12 +1,17 @@
 import { StyleSheet, Text, View, Pressable, Image } from "react-native";
 
-const MealItem = ({ title, imageUrl }) => {
+const MealItem = (props) => {
   return (
     <View>
-      <Pressable>
+      <Pressable android_ripple={{ color: "#ccc" }}>
         <View style={styles.innerContainer}>
-          <Image source={{ uri: imageUrl }} style={styles.image} />
-          <Text style={styles.title}>{title}</Text>
+          <Image source={{ uri: props.imageUrl }} style={styles.image} />
+          <Text style={styles.title}>{props.title}</Text>
+        </View>
+        <View>
+          <Text>{props.timing}m</Text>
+          <Text>{props.complex.toUpperCase()}</Text>
+          <Text>{props.afford.toUpperCase()}</Text>
         </View>
       </Pressable>
     </View>
