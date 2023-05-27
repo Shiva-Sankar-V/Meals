@@ -1,12 +1,24 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
+import { MEALS } from "../data/dummyData";
+import MealDetails from "../components/MealDetails";
 
 const MealsDetailsScreen = ({ route }) => {
   const mealID = route.params.mealId;
 
+  const selectedMeal = MEALS.find((meal) => meal.id === mealID);
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>This is meal detail screen.</Text>
-      <Text style={styles.text}>Select meal has an ID:({mealID})</Text>
+      <Image source={{ uri: selectedMeal.imageUrl }} />
+
+      <Text style={styles.text}>Selected meal has an ID:({mealID})</Text>
+      <MealDetails
+        timing={selectedMeal.duration}
+        complex={selectedMeal.complexity}
+        afford={selectedMeal.affordability}
+      />
+      <Text>Ingedients</Text>
+
+      <Text>steps</Text>
     </View>
   );
 };
