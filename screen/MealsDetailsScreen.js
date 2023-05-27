@@ -10,15 +10,20 @@ const MealsDetailsScreen = ({ route }) => {
     <View style={styles.container}>
       <Image source={{ uri: selectedMeal.imageUrl }} />
 
-      <Text style={styles.text}>Selected meal has an ID:({mealID})</Text>
+      <Text style={styles.text}>{selectedMeal.title}</Text>
       <MealDetails
         timing={selectedMeal.duration}
         complex={selectedMeal.complexity}
         afford={selectedMeal.affordability}
       />
       <Text>Ingedients</Text>
-
+      {selectedMeal.ingredients.map((ingredients) => (
+        <Text key={ingredients}>{ingredients}</Text>
+      ))}
       <Text>steps</Text>
+      {selectedMeal.steps.map((steps) => (
+        <Text key={steps}>{steps}</Text>
+      ))}
     </View>
   );
 };
@@ -36,5 +41,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 16,
+    padding: 12,
   },
 });
