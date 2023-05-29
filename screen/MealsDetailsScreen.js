@@ -1,30 +1,34 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import { MEALS } from "../data/dummyData";
 import MealDetails from "../components/MealDetails";
+import Subtitle from "../components/MealDetail/Subtitle";
+import List from "../components/MealDetail/List";
 
 const MealsDetailsScreen = ({ route }) => {
   const mealID = route.params.mealId;
 
   const selectedMeal = MEALS.find((meal) => meal.id === mealID);
   return (
-    <View style={styles.container}>
-      <Image source={{ uri: selectedMeal.imageUrl }} />
-
-      <Text style={styles.text}>{selectedMeal.title}</Text>
+    <ScrollView style={styles.container}>
+      <View style={styles.innercontainer}>
+        <Image style={styles.image} source={{ uri: selectedMeal.imageUrl }} />
+      </View>
+      <Text style={styles.title}>{selectedMeal.title}</Text>
       <MealDetails
         timing={selectedMeal.duration}
         complex={selectedMeal.complexity}
         afford={selectedMeal.affordability}
+        textStyle={styles.detailText}
       />
-      <Text>Ingedients</Text>
-      {selectedMeal.ingredients.map((ingredients) => (
-        <Text key={ingredients}>{ingredients}</Text>
-      ))}
-      <Text>steps</Text>
-      {selectedMeal.steps.map((steps) => (
-        <Text key={steps}>{steps}</Text>
-      ))}
-    </View>
+      <View style={styles.listOuterContainer}>
+        <View style={styles.listContainer}>
+          <Subtitle>Ingredients</Subtitle>
+          <List data={selectedMeal.ingredients} />
+          <Subtitle>Steps</Subtitle>
+          <List data={selectedMeal.steps} />
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -33,14 +37,34 @@ export default MealsDetailsScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
-    alignItems: "center",
-    justifyContent: "center",
+    marginBottom: 30,
   },
-  text: {
-    color: "white",
+  title: {
     fontWeight: "bold",
-    fontSize: 16,
-    padding: 12,
+    fontSize: 24,
+    textAlign: "center",
+    margin: 1,
+    color: "white",
+  },
+  innercontainer: {
+    marginHorizontal: 16,
+    marginVertical: 10,
+    borderWidth: 2,
+    borderColor: "red",
+  },
+
+  image: {
+    width: "100%",
+    height: 350,
+  },
+
+  detailText: {
+    color: "white",
+  },
+  listContainer: {
+    maxWidth: "80%",
+  },
+  listOuterContainer: {
+    alignItems: "center",
   },
 });

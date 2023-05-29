@@ -2,10 +2,14 @@ import { StyleSheet, Text, View } from "react-native";
 
 const MealDetails = (props) => {
   return (
-    <View style={styles.details}>
-      <Text style={styles.detailitem}>{props.timing}m</Text>
-      <Text style={styles.detailitem}>{props.complex.toUpperCase()}</Text>
-      <Text style={styles.detailitem}>{props.afford.toUpperCase()}</Text>
+    <View style={[styles.details, props.style]}>
+      <Text style={[styles.detailitem, props.textStyle]}>{props.timing}m</Text>
+      <Text style={[styles.detailitem, props.textStyle]}>
+        {props.complex.toUpperCase()}
+      </Text>
+      <Text style={[styles.detailitem, props.textStyle]}>
+        {props.afford.toUpperCase()}
+      </Text>
     </View>
   );
 };
