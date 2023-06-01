@@ -42,7 +42,9 @@ export default function App() {
           <Stack.Screen
             name="Drawer"
             component={DrawerNavigator}
-            options={{}}
+            options={{
+              headerShown: false,
+            }}
           />
           <Stack.Screen name="Meals Overview" component={MealsOverviewScreen} />
           <Stack.Screen name="Meal Detail" component={MealsDetailsScreen} />
