@@ -19,6 +19,7 @@ function DrawerNavigator() {
         headerStyle: { backgroundColor: "#351401" },
         headerTintColor: "white",
         sceneContainerStyle: { backgroundColor: "#3f2f25" },
+        drawerContentStyle: { backgroundColor: "#351401" },
       }}
     >
       <Drawer.Screen name="Categories" component={CategoriesScreen1} />
