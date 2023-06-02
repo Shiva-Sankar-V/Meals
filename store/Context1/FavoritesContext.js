@@ -1,13 +1,13 @@
 import { createContext, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 
-const FavoritesContext = createContext({
+export const FavoritesContext = createContext({
   ids: [],
-  addFavorite: (id) => {},
-  removeFavorite: (id) => {},
+  addFavourite: (id) => {},
+  removeFavourite: (id) => {},
 });
 
-const FavoriteContextProvider = ({ children }) => {
+const FavoriteContextProvider = (props) => {
   const [favMealIds, setFavMealIds] = useState([]);
 
   function addFavorite1(id) {
@@ -20,15 +20,15 @@ const FavoriteContextProvider = ({ children }) => {
     );
   }
 
-  const favs = {
-    id: favMealIds,
-    addFavorite: addFavorite1,
-    removeFavorite: removeFavorite1,
+  const value = {
+    ids: favMealIds,
+    addFavourite: addFavorite1,
+    removeFavourite: removeFavorite1,
   };
 
   return (
-    <FavoritesContext.Provider value={favs}>
-      {children}
+    <FavoritesContext.Provider value={value}>
+      {props.children}
     </FavoritesContext.Provider>
   );
 };

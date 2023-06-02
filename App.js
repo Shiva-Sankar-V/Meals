@@ -9,7 +9,7 @@ import MealsOverviewScreen from "./screen/MealsOverviewScreen";
 import MealsDetailsScreen from "./screen/MealsDetailsScreen";
 import FavouritesScreen from "./screen/FavouritesScreen";
 import { Ionicons } from "@expo/vector-icons";
-import FavoriteContextProvider from "./store/context/favorites-context";
+import FavoriteContextProvider from "./store/Context1/FavoritesContext";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();

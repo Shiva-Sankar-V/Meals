@@ -1,40 +1,48 @@
-import { useLayoutEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView,
-  Button,
-} from "react-native";
+import { useContext, useLayoutEffect } from "react";
+import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import { MEALS } from "../data/dummyData";
 import MealDetails from "../components/MealDetails";
 import Subtitle from "../components/MealDetail/Subtitle";
 import List from "../components/MealDetail/List";
 import IconButton from "../components/IconButton";
+import { FavoritesContext } from "../store/Context1/FavoritesContext";
 
 const MealsDetailsScreen = ({ route, navigation }) => {
+  const favoriteMealCtx = useContext(FavoritesContext);
+
   const mealID = route.params.mealId;
 
   const selectedMeal = MEALS.find((meal) => meal.id === mealID);
 
-  function headerButtonPressed() {
-    console.log("Button Pressed!!");
+  const mealIsFavorite = favoriteMealCtx.ids.includes(mealID);
+
+  function changeFavStatusHandler() {
+    console.log(mealIsFavorite);
+    console.log(mealID);
+    if (mealIsFavorite) {
+      favoriteMealCtx.removeFavourite(mealID);
+    } else {
+      favoriteMealCtx.addFavourite(mealID);
+    }
   }
+
+  // function changeFavStatusHandler will be called on pressing icon & mealIsFavorite gives true or false. I
+  //  If it is true, on pressing icon  - removeFavorite function gets executed there by removing the meal from fovorites and
+  // if it is false,on pressing icon - addFavorite function gets executed there by adding the meal to fovorites
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
         return (
           <IconButton
-            icon="star"
+            icon={mealIsFavorite ? "star" : "star-outline"}
             color="white"
-            headerButtonTap={headerButtonPressed}
+            headerButtonTap={changeFavStatusHandler}
           />
         );
       },
     });
-  }, [navigation, headerButtonPressed]);
+  }, [navigation, changeFavStatusHandler]);
 
   return (
     <ScrollView style={styles.container}>
