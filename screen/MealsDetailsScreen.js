@@ -17,8 +17,8 @@ const MealsDetailsScreen = ({ route, navigation }) => {
   const mealIsFavorite = favoriteMealCtx.ids.includes(mealID);
 
   function changeFavStatusHandler() {
-    console.log(mealIsFavorite);
-    console.log(mealID);
+    // console.log(mealIsFavorite);
+    // console.log(mealID);
     if (mealIsFavorite) {
       favoriteMealCtx.removeFavourite(mealID);
     } else {
